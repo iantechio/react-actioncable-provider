@@ -4,19 +4,23 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -34,14 +38,12 @@ var _React$createContext = React.createContext(),
     Provider = _React$createContext.Provider,
     Consumer = _React$createContext.Consumer;
 
-var ActionCableProvider =
-/*#__PURE__*/
-function (_React$Component) {
+var ActionCableProvider = /*#__PURE__*/function (_React$Component) {
   _inherits(ActionCableProvider, _React$Component);
 
-  function ActionCableProvider() {
-    var _getPrototypeOf2;
+  var _super = _createSuper(ActionCableProvider);
 
+  function ActionCableProvider() {
     var _this;
 
     _classCallCheck(this, ActionCableProvider);
@@ -50,7 +52,7 @@ function (_React$Component) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ActionCableProvider)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "UNSAFE_componentWillMount", function () {
       if (this.props.cable) {
@@ -99,14 +101,12 @@ ActionCableProvider.propTypes = {
   children: PropTypes.any
 };
 
-var ActionCableController =
-/*#__PURE__*/
-function (_React$Component2) {
+var ActionCableController = /*#__PURE__*/function (_React$Component2) {
   _inherits(ActionCableController, _React$Component2);
 
-  function ActionCableController() {
-    var _getPrototypeOf3;
+  var _super2 = _createSuper(ActionCableController);
 
+  function ActionCableController() {
     var _this2;
 
     _classCallCheck(this, ActionCableController);
@@ -115,9 +115,13 @@ function (_React$Component2) {
       args[_key2] = arguments[_key2];
     }
 
-    _this2 = _possibleConstructorReturn(this, (_getPrototypeOf3 = _getPrototypeOf(ActionCableController)).call.apply(_getPrototypeOf3, [this].concat(args)));
+    _this2 = _super2.call.apply(_super2, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this2), "componentDidMount", function () {
+      this.connectToChannel();
+    });
+
+    _defineProperty(_assertThisInitialized(_this2), "connectToChannel", function () {
       var self = this;
       var _props = this.props;
       var onReceived = _props.onReceived;
@@ -144,11 +148,22 @@ function (_React$Component2) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this2), "componentWillUnmount", function () {
+    _defineProperty(_assertThisInitialized(_this2), "disconnectFromChannel", function () {
       if (this.cable) {
         this.props.cable.subscriptions.remove(this.cable);
         this.cable = null;
       }
+    });
+
+    _defineProperty(_assertThisInitialized(_this2), "componentDidUpdate", function (prevProps) {
+      if (JSON.stringify(prevProps.channel) !== JSON.stringify(this.props.channel)) {
+        this.disconnectFromChannel();
+        this.connectToChannel();
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this2), "componentWillUnmount", function () {
+      this.disconnectFromChannel();
     });
 
     _defineProperty(_assertThisInitialized(_this2), "send", function (data) {
@@ -188,14 +203,12 @@ ActionCableController.propTypes = {
   children: PropTypes.any
 };
 
-var Component =
-/*#__PURE__*/
-function (_React$Component3) {
+var Component = /*#__PURE__*/function (_React$Component3) {
   _inherits(Component, _React$Component3);
 
-  function Component() {
-    var _getPrototypeOf4;
+  var _super3 = _createSuper(Component);
 
+  function Component() {
     var _this3;
 
     _classCallCheck(this, Component);
@@ -204,16 +217,16 @@ function (_React$Component3) {
       args[_key3] = arguments[_key3];
     }
 
-    _this3 = _possibleConstructorReturn(this, (_getPrototypeOf4 = _getPrototypeOf(Component)).call.apply(_getPrototypeOf4, [this].concat(args)));
+    _this3 = _super3.call.apply(_super3, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this3), "render", function () {
       var _this4 = this;
 
       return React.createElement(Consumer, null, function (_ref) {
         var cable = _ref.cable;
-        return React.createElement(ActionCableController, _objectSpread({
+        return React.createElement(ActionCableController, _objectSpread(_objectSpread({
           cable: cable
-        }, _this4.props, {
+        }, _this4.props), {}, {
           ref: _this4.props.forwardedRef
         }), _this4.props.children || null);
       });
@@ -235,19 +248,17 @@ Component.propTypes = {
   children: PropTypes.any
 };
 var ActionCableConsumer = React.forwardRef(function (props, ref) {
-  return React.createElement(Component, _objectSpread({}, props, {
+  return React.createElement(Component, _objectSpread(_objectSpread({}, props), {}, {
     forwardedRef: ref
   }), props.children || null);
 });
 
-var ActionCable =
-/*#__PURE__*/
-function (_React$Component4) {
+var ActionCable = /*#__PURE__*/function (_React$Component4) {
   _inherits(ActionCable, _React$Component4);
 
-  function ActionCable() {
-    var _getPrototypeOf5;
+  var _super4 = _createSuper(ActionCable);
 
+  function ActionCable() {
     var _this5;
 
     _classCallCheck(this, ActionCable);
@@ -256,7 +267,7 @@ function (_React$Component4) {
       args[_key4] = arguments[_key4];
     }
 
-    _this5 = _possibleConstructorReturn(this, (_getPrototypeOf5 = _getPrototypeOf(ActionCable)).call.apply(_getPrototypeOf5, [this].concat(args)));
+    _this5 = _super4.call.apply(_super4, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this5), "componentDidMount", function () {
       console.warn("DEPRECATION WARNING: The <ActionCable /> component has been deprecated and will be removed in a future release. Use <ActionCableConsumer /> instead.");
