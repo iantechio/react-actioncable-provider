@@ -1,6 +1,6 @@
 {
   "name": "@thrash-industries/react-actioncable-provider",
-  "version": "3.0.7",
+  "version": "3.0.9",
   "description": "ActionCable Provider for React",
   "main": "dist/index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   ],
   "author": "Li Jie <cpunion@gmail.com>",
   "contributors": [
-    "Jack Howard <jackhowaa@gmail.com>"
+    "jackhowa <jackhowa@fastmail.com>"
   ],
   "license": "MIT",
   "bugs": {
@@ -32,17 +32,16 @@
   "homepage": "https://github.com/JackHowa/react-actioncable-provider",
   "dependencies": {
     "actioncable": "^5.2.6",
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.8.1",
     "react": "^16.9.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.7",
-    "@babel/core": "^7.7.7",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/preset-env": "^7.7.7",
-    "@babel/preset-react": "^7.7.4",
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
     "babel-jest": "^26.6.3",
-    "chai": "^4.1.2",
+    "chai": "^4.3.6",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "jest": "^26.6.3",
