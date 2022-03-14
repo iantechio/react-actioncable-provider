@@ -23,7 +23,8 @@
   ],
   "author": "Li Jie <cpunion@gmail.com>",
   "contributors": [
-    "jackhowa <jackhowa@fastmail.com>"
+    "jackhowa <jackhowa@fastmail.com>",
+    "hashwin"
   ],
   "license": "MIT",
   "bugs": {
@@ -32,7 +33,6 @@
   "homepage": "https://github.com/JackHowa/react-actioncable-provider",
   "dependencies": {
     "actioncable": "^5.2.6",
-    "create-react-class": "^15.6.2",
     "prop-types": "^15.8.1",
     "react": "^16.9.0"
   },
