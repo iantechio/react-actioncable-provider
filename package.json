@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/JackHowa/react-actioncable-provider",
   "dependencies": {
-    "actioncable": "^5.2.6",
+    "actioncable": "^5.2.8",
     "prop-types": "^15.8.1",
     "react": "^16.9.0"
   },
