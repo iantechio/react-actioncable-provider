@@ -6,7 +6,7 @@ This package provides an ActionCable context provider and consumer to allow you 
 
 As this package uses React's new Context API, **React 16.3+ is required**.
 
-Run `npx browserslist` to see default option in `.browserslistrc` [compatibility](https://browserl.ist/?q=defaults). This is so you don't have to transpile this package for IE 11. 
+Run `npx browserslist` to see `default, not ie 11` option in `.browserslistrc` [compatibility](https://browserl.ist/?q=defaults). There is no IE 11 support starting in version 4.0.0.
 
 ## Install
 
