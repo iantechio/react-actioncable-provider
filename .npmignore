@@ -1,5 +1,4 @@
 .babelrc
-.travis.yml
 .npmignore
 /config/
 yarn.lock
