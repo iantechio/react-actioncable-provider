@@ -33,7 +33,7 @@ The provider is used in an outer container and wraps all of the components that 
 #### With `cable`
 
 ```jsx
-import ActionCable from "actioncable";
+import ActionCable from "@rails/actioncable";
 
 const cable = ActionCable.createConsumer("ws://test.example.com/cable");
 
